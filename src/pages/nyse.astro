@@ -1,11 +1,11 @@
 ---
-import PageLayout from '../layouts/PageLayout.astro';
+import InnerPageLayout from '../layouts/InnerPageLayout.astro';
+import pageHtml from '../components/pages/nyse.html?raw';
 
-const title = "NYSE";
-const description = "[akw_table_all_stocks exchange=NYS]";
-const htmlContent = "[akw_table_all_stocks exchange=NYS]";
+const title = 'NYSE';
+const description = 'NYSE aandelenoverzicht op FinancieleBegrippen.com';
 ---
 
-<PageLayout title={title} description={description}>
-  <div set:html={htmlContent} />
-</PageLayout>
+<InnerPageLayout title={title} description={description}>
+  <Fragment set:html={pageHtml} />
+</InnerPageLayout>

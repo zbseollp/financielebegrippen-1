@@ -1,32 +1,20 @@
 ---
-import BaseLayout from './BaseLayout.astro';
+import InnerPageLayout from './InnerPageLayout.astro';
+import InnerArticle from '../components/InnerArticle.astro';
 
 interface Props {
   title: string;
   description?: string;
+  pubDate?: Date;
 }
 
-const { title, description } = Astro.props;
+const { title, description, pubDate } = Astro.props;
 ---
 
-<BaseLayout title={title} description={description}>
-  <article class="page-content">
-    <h1>{title}</h1>
-    <div class="prose">
+<InnerPageLayout title={title} description={description} bodyClass="elementor-36361 hub-index-page">
+  <InnerArticle title={title} pubDate={pubDate}>
+    <div class="inner-article-content hub-page-content">
       <slot />
     </div>
-  </article>
-</BaseLayout>
-
-<style>
-  .page-content {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 2rem 1.5rem;
-  }
-  .page-content h1 {
-    font-size: 2rem;
-    margin-bottom: 1.5rem;
-    color: #1a365d;
-  }
-</style>
+  </InnerArticle>
+</InnerPageLayout>

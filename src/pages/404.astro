@@ -1,0 +1,54 @@
+---
+import InnerPageLayout from '../layouts/InnerPageLayout.astro';
+
+const title = 'Pagina niet gevonden';
+const description = 'De pagina die je zoekt bestaat niet of is verplaatst.';
+---
+
+<InnerPageLayout title={title} description={description} bodyClass="page-404">
+  <div class="not-found">
+    <h1>404</h1>
+    <p>De pagina die je zoekt bestaat niet of is verplaatst.</p>
+    <p>
+      <a href="/">Terug naar home</a>
+      ·
+      <a href="/sitemap/">Bekijk sitemap</a>
+    </p>
+  </div>
+</InnerPageLayout>
+
+<style is:global>
+  .page-404 .not-found {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 96px 20px 120px;
+    text-align: center;
+    font-family: 'DM Sans', sans-serif;
+  }
+
+  .page-404 .not-found h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 4rem;
+    font-weight: 700;
+    color: var(--e-global-color-primary, #223645);
+    margin: 0 0 0.5rem;
+    line-height: 1;
+  }
+
+  .page-404 .not-found p {
+    color: #4a5568;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin: 0 0 1rem;
+  }
+
+  .page-404 .not-found a {
+    color: var(--e-global-color-accent, #2c72cd);
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .page-404 .not-found a:hover {
+    text-decoration: underline;
+  }
+</style>

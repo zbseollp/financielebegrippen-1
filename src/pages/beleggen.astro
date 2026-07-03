@@ -3,9 +3,10 @@ import PageLayout from '../layouts/PageLayout.astro';
 
 const title = "Beleggen";
 const description = "Beleggen is een vorm van geld investeren, voor een lange of korte tijd, met als doel om er in de toekomst financieel voordeel te behalen. U geeft zekere bedrage";
+const pubDate = new Date('2010-08-17');
 const htmlContent = "Beleggen is een vorm van geld investeren, voor een lange of korte tijd, met als doel om er in de toekomst financieel voordeel te behalen. U geeft zekere bedragen uit om een toekomstig onzeker bedrag te ontvangen. U kunt online beleggen maar het kan ook door het te beleggen via een bank of tussenpersoon. Hoeveel voordeel u kunt behalen is afhankelijk van de markt. Als u belegt loopt u risico. Het is niet verstandig om geld te beleggen dat u niet kunt missen. Houdt het laatste beleggersnieuws in de gaten. Er zijn verschillende websites die informatie leveren over online beleggen. Op dit soort websites is meer informatie te vinden over de online beleggingsmarkt in Nederland. Kijk hier voor de actuele [aandelen koersen](https://www.aandelen.nu).";
 ---
 
-<PageLayout title={title} description={description}>
+<PageLayout title={title} description={description} pubDate={pubDate}>
   <div set:html={htmlContent} />
 </PageLayout>

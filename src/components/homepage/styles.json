@@ -1,0 +1,32 @@
+{
+  "cssFiles": [
+    "/css/homepage/frontend.min.css",
+    "/css/homepage/widget-image.min.css",
+    "/css/homepage/widget-nav-menu.min.css",
+    "/css/homepage/widget-social-icons.min.css",
+    "/css/homepage/apple-webkit.min.css",
+    "/css/homepage/widget-heading.min.css",
+    "/css/homepage/elementor-icons.min.css",
+    "/css/homepage/post-4471.css",
+    "/css/homepage/widget-icon-box.min.css",
+    "/css/homepage/widget-posts.min.css",
+    "/css/homepage/swiper.min.css",
+    "/css/homepage/e-swiper.min.css",
+    "/css/homepage/widget-testimonial-carousel.min.css",
+    "/css/homepage/widget-reviews.min.css",
+    "/css/homepage/widget-star-rating.min.css",
+    "/css/homepage/widget-carousel-module-base.min.css",
+    "/css/homepage/post-4479.css",
+    "/css/homepage/post-4472.css",
+    "/css/homepage/post-4522.css",
+    "/css/homepage/style.css",
+    "/css/homepage/skin.css",
+    "/css/homepage/skin.css",
+    "/css/homepage/montserrat.css",
+    "/css/homepage/dmsans.css",
+    "/css/homepage/fontawesome.min.css",
+    "/css/homepage/solid.min.css",
+    "/css/homepage/brands.min.css",
+    "/css/homepage/inline.css"
+  ]
+}

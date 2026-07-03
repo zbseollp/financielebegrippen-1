@@ -1,0 +1,69 @@
+---
+import siteChromeStyles from '../data/site-chrome-styles.json';
+import innerStyles from '../data/inner-page-styles.json';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import SiteFavicon from '../components/SiteFavicon.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+  bodyClass?: string;
+}
+
+const {
+  title,
+  description = 'Honderden financiele begrippen uitgelegd',
+  bodyClass = '',
+} = Astro.props;
+
+const fullTitle = title === 'Financiële Begrippen' ? title : `${title} | Financiële Begrippen`;
+const cssFiles = [...new Set([...(siteChromeStyles as string[]), ...(innerStyles as string[])])];
+---
+
+<!doctype html>
+<html lang="nl-NL">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <meta name="robots" content="index, follow" />
+    <SiteFavicon />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Montserrat:400,700|DM+Sans:400,500,600,700&display=swap"
+    />
+    {cssFiles.map((href) => (
+      <link rel="stylesheet" href={href} />
+    ))}
+  </head>
+  <body
+    class={`wp-singular page-template page-template-elementor_header_footer page wp-theme-woohoo elementor-default elementor-template-full-width elementor-kit-4471 elementor-page ${bodyClass}`.trim()}
+  >
+    <SiteHeader />
+    <slot />
+    <SiteFooter />
+    <script src="/js/site-nav.js" defer></script>
+    <script src="/js/inner-page-toc.js" defer></script>
+  </body>
+</html>
+
+<style is:global>
+  body {
+    margin: 0;
+    padding: 0;
+  }
+  .elementor-screen-only,
+  .screen-reader-text {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+  }
+</style>

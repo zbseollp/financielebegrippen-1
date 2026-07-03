@@ -1,5 +1,6 @@
 ---
-import BaseLayout from './BaseLayout.astro';
+import InnerPageLayout from './InnerPageLayout.astro';
+import InnerArticle from '../components/InnerArticle.astro';
 import type { CollectionEntry } from 'astro:content';
 
 interface Props {
@@ -7,88 +8,58 @@ interface Props {
 }
 
 const { entry } = Astro.props;
-const { title, description, pubDate, updatedDate, author, categories, tags } = entry.data;
-const formattedDate = pubDate.toLocaleDateString('nl-NL', {
-  year: 'numeric',
-  month: 'long',
-  day: 'numeric',
-});
+const { title, description, pubDate } = entry.data;
+const { id } = entry;
+
+const isVermogenVan = id.startsWith('vermogen-van/');
+const isEuroLenen = id.endsWith('-euro-lenen');
+const isAchterafBetalen = id.endsWith('-achteraf-betalen');
+
+let displayTitle = title;
+let breadcrumbs: { label: string; href?: string }[] | undefined;
+let displayDate = pubDate;
+
+if (isVermogenVan) {
+  displayTitle = `Vermogen van ${title}`;
+  breadcrumbs = [
+    { label: 'Vermogen van', href: '/vermogen-van/' },
+    { label: title },
+  ];
+  displayDate = pubDate ?? new Date('2024-01-25');
+} else if (isEuroLenen) {
+  const amount = id.replace(/-euro-lenen$/, '');
+  displayTitle = `${amount} euro lenen`;
+  breadcrumbs = [
+    { label: 'lenen', href: '/lenen/' },
+    { label: amount },
+  ];
+  displayDate = pubDate ?? new Date('2024-02-29');
+} else if (isAchterafBetalen) {
+  displayTitle = `${title} achteraf betalen`;
+  breadcrumbs = [
+    { label: 'Achteraf betalen', href: '/achteraf-betalen/' },
+    { label: title },
+  ];
+  displayDate = pubDate ?? new Date('2024-02-29');
+}
 ---
 
-<BaseLayout title={title} description={description}>
-  <article class="blog-post">
-    <header class="post-header">
-      <h1>{title}</h1>
-      <div class="post-meta">
-        <time datetime={pubDate.toISOString()}>{formattedDate}</time>
-        {author && <span class="author">door {author}</span>}
-      </div>
-      {categories && categories.length > 0 && (
-        <div class="post-taxonomy">
-          {categories.map((cat) => (
-            <span class="category-tag">{cat}</span>
-          ))}
-        </div>
-      )}
-    </header>
-    <div class="prose">
+<InnerPageLayout title={displayTitle} description={description} bodyClass="elementor-36361">
+  <InnerArticle
+    title={displayTitle}
+    pubDate={displayDate}
+    excludeSlug={id}
+    breadcrumbs={breadcrumbs}
+  >
+    <div
+      class:list={[
+        'prose',
+        { 'vermogen-van-article': isVermogenVan },
+        { 'euro-lenen-article': isEuroLenen },
+        { 'achteraf-betalen-article': isAchterafBetalen },
+      ]}
+    >
       <slot />
     </div>
-    {tags && tags.length > 0 && (
-      <footer class="post-tags">
-        <strong>Tags:</strong>
-        {tags.map((tag) => (
-          <span class="tag">{tag}</span>
-        ))}
-      </footer>
-    )}
-    {updatedDate && (
-      <p class="updated">
-        Bijgewerkt: {updatedDate.toLocaleDateString('nl-NL')}
-      </p>
-    )}
-  </article>
-</BaseLayout>
-
-<style>
-  .blog-post {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 2rem 1.5rem;
-  }
-  .post-header h1 {
-    font-size: 2rem;
-    margin-bottom: 0.75rem;
-    color: #1a365d;
-  }
-  .post-meta {
-    color: #666;
-    font-size: 0.9rem;
-    margin-bottom: 1rem;
-    display: flex;
-    gap: 1rem;
-  }
-  .post-taxonomy {
-    margin-bottom: 1.5rem;
-  }
-  .category-tag,
-  .tag {
-    display: inline-block;
-    background: #e2e8f0;
-    color: #2d3748;
-    padding: 0.2rem 0.6rem;
-    border-radius: 4px;
-    font-size: 0.85rem;
-    margin-right: 0.5rem;
-  }
-  .post-tags {
-    margin-top: 2rem;
-    padding-top: 1rem;
-    border-top: 1px solid #e2e8f0;
-  }
-  .updated {
-    margin-top: 1rem;
-    font-size: 0.85rem;
-    color: #888;
-  }
-</style>
+  </InnerArticle>
+</InnerPageLayout>

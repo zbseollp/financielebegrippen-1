@@ -1,31 +1,23 @@
 ---
-import '../styles/global.css';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
+import InnerPageLayout from './InnerPageLayout.astro';
 
 interface Props {
   title: string;
   description?: string;
+  bodyClass?: string;
 }
 
-const { title, description = 'Honderden financiele begrippen uitgelegd' } = Astro.props;
-const fullTitle = title === 'Financiële Begrippen' ? title : `${title} | Financiële Begrippen`;
+const { title, description, bodyClass = '' } = Astro.props;
 ---
 
-<!doctype html>
-<html lang="nl">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content={description} />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <title>{fullTitle}</title>
-  </head>
-  <body>
-    <Header />
-    <main class="main-content">
-      <slot />
-    </main>
-    <Footer />
-  </body>
-</html>
+<InnerPageLayout title={title} description={description} bodyClass={bodyClass}>
+  <main class="site-main">
+    <slot />
+  </main>
+</InnerPageLayout>
+
+<style is:global>
+  .site-main {
+    min-height: 40vh;
+  }
+</style>

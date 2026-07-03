@@ -1,11 +1,18 @@
 ---
-import PageLayout from '../layouts/PageLayout.astro';
+import InnerPageLayout from '../layouts/InnerPageLayout.astro';
+import Sitemap from '../components/Sitemap.astro';
+import pageShell from '../components/pages/sitemap-shell.html?raw';
 
-const title = "Sitemap";
-const description = "[wp_sitemap_page]";
-const htmlContent = "[wp_sitemap_page]";
+const title = 'Sitemap';
+const description = 'Volledige sitemap van FinancieleBegrippen.com met alle paginas en artikelen.';
+
+const parts = pageShell.split('<!--SITEMAP_SLOT-->');
+const shellBefore = parts[0] ?? pageShell;
+const shellAfter = parts[1] ?? '';
 ---
 
-<PageLayout title={title} description={description}>
-  <div set:html={htmlContent} />
-</PageLayout>
+<InnerPageLayout title={title} description={description}>
+  <Fragment set:html={shellBefore} />
+  <Sitemap />
+  <Fragment set:html={shellAfter} />
+</InnerPageLayout>

@@ -1,11 +1,25 @@
 ---
-import PageLayout from '../layouts/PageLayout.astro';
+import InnerPageLayout from '../layouts/InnerPageLayout.astro';
+import InnerArticle from '../components/InnerArticle.astro';
+import ContactForm from '../components/ContactForm.astro';
 
-const title = "Contact";
-const description = "Wil je contact met de redactie van FinancieleBegrippen.nl of zou je een samenwerking met ons aan willen gaan?Neem dan contact op middels onderstaand contact for";
-const htmlContent = "Wil je contact met de redactie van FinancieleBegrippen.nl of zou je een samenwerking met ons aan willen gaan?\n\nNeem dan contact op middels onderstaand contact formulier. We streven er naar alle vragen binnen 24 uur te beantwoorden.";
+const title = 'Contact';
+const description =
+  'Wil je contact met de redactie van FinancieleBegrippen.nl of zou je een samenwerking met ons aan willen gaan?';
+const pubDate = new Date('2023-01-05');
 ---
 
-<PageLayout title={title} description={description}>
-  <div set:html={htmlContent} />
-</PageLayout>
+<InnerPageLayout title={title} description={description} bodyClass="elementor-36361 contact-page">
+  <InnerArticle title={title} pubDate={pubDate}>
+    <p>
+      Wil je contact met de redactie van FinancieleBegrippen.nl of zou je een samenwerking met ons aan
+      willen gaan?
+    </p>
+    <p>
+      Neem dan contact op middels onderstaand contact formulier. We streven er naar alle vragen binnen 24
+      uur te beantwoorden.
+    </p>
+    <ContactForm />
+  </InnerArticle>
+  <script src="/js/contact-form.js" defer></script>
+</InnerPageLayout>

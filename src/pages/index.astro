@@ -1,11 +1,12 @@
 ---
-import PageLayout from '../layouts/PageLayout.astro';
-
-const title = "Financiële Begrippen";
-const description = "Bent u op zoek naar een financieel begrip of de definitie van een economisch begrip? FinanciëleBegrippen.com heeft een uitgebreid overzicht van financiële begrippen met een uitleg en omschrijving.";
-const htmlContent = "[![Finance](/wp-content/uploads/2019/03/Finance-1.jpg)](/wp-content/uploads/2019/03/Finance-1.jpg) Bent u op zoek naar een _financieel begrip_ of de definitie van een economisch begrip? FinanciëleBegrippen.com heeft een uitgebreid overzicht van **financiële begrippen** met een uitleg en omschrijving. Een **financieel woordenboek** over alles wat te maken heeft met hypotheken, lenen, verzekeren en beleggen. Wilt u bijvoorbeeld weten wat er schuil gaat achter die moeilijke woorden in de voorwaarden van de verzekering? U kunt direct een uitleg en de definitie opzoeken.\n\n*   Bijna 2000 financiële begrippen worden uitgelegd.\n*   Bij elk begrip een duidelijke definitie en uitleg.\n*   Verbreed uw kennis over financiën.\n*   Lees, leer en weet het.\n*   [Woorden vertalen](/vertalen)? Dat kan ook.\n\n**Populaire begrippen:** [Financiële Administratie](/financiele-administratie) [ING Rentepunten](/ing-rentepunten) [Loonheffingskorting](/loonheffingskorting) [Rabointernetbankieren](/rabointernetbankieren) [Collectieve verzekeringen](/collectieve-zorgverzekering)\n\n## Financiele termen\n\nIn veel brochures en webteksten worden lastige financiele termen gebruikt, daar helpen wij graag bij door deze woorden duidelijk uit te leggen. Mist u een term? Geef het door via onze contactpagina en we zoeken het voor u uit. In de navigatie bovenin onze webiste kunt u makkelijk zoeken op onze website.\n\n## Verzekeringen\n\nWie kan er nog zonder de nodige verzekeringen? Het is fijn om te weten dat als er iets gebeurt dat het vergoed wordt door de verzekering. Er zijn ook verplichte verzekering zoals de zorgverzekering. Betaal niet teveel en en ontdek [welke zorgverzekering bij u past](https://www.pensioenvergelijken.net/zorgverzekeringen-vergelijken/).\n\n## **Financiele maatschappelijke onderdelen**\n\nEen groot deel van de samenleving krijgt loon, andere een uitkering. Een voorbeeld is de AOW. Klik hier voor [AOW bedragen 2022](https://www.aow.nu/aow-bedragen-2022/). Financiele instanties in Nederland\n\n*   *   [De Nederlandse Bank](https://www.dnb.nl)\n    *   [Ministerie van Financie](https://www.rijksoverheid.nl/ministeries/ministerie-van-financien)\n    *   [De Belastingdienst](https://www.belastingdienst.nl)\n    *   [Wisselkoers berekenen](https://www.wisselkoersberekenen.nl)";
+import HomeLayout from '../layouts/HomeLayout.astro';
+import headerHtml from '../components/homepage/header.html?raw';
+import mainHtml from '../components/homepage/main.html?raw';
+import footerHtml from '../components/homepage/footer.html?raw';
 ---
 
-<PageLayout title={title} description={description}>
-  <div set:html={htmlContent} />
-</PageLayout>
+<HomeLayout>
+  <Fragment set:html={headerHtml} />
+  <Fragment set:html={mainHtml} />
+  <Fragment set:html={footerHtml} />
+</HomeLayout>

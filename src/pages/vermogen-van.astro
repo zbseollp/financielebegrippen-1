@@ -1,11 +1,22 @@
 ---
+import { getCollection } from 'astro:content';
 import PageLayout from '../layouts/PageLayout.astro';
+import HubLinks from '../components/HubLinks.astro';
+import { groupVermogenVan } from '../lib/hub-pages';
 
-const title = "Vermogen van";
-const description = "[zb_mpx_category_links sheet_id=\"15oPKTmNtzU3JIO42gYicGX5O7s73Dm9KJW9EUEVLG6w\" category=\"Vermogen van\"]";
-const htmlContent = "";
+const title = 'Vermogen van';
+const description =
+  'Overzicht van alle vermogen-van pagina\'s op FinancieleBegrippen.com — ontdek het vermogen van bekende Nederlanders.';
+const pubDate = new Date('2024-02-02');
+
+const entries = await getCollection('blog');
+const groups = groupVermogenVan(entries);
 ---
 
-<PageLayout title={title} description={description}>
-  <div set:html={htmlContent} />
+<PageLayout title={title} description={description} pubDate={pubDate}>
+  <p class="hub-page-intro">
+    Ontdek het vermogen van bekende personen. Alle namen staan alfabetisch gerangschikt — klik door
+    naar het volledige artikel.
+  </p>
+  <HubLinks groups={groups} />
 </PageLayout>

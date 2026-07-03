@@ -1,11 +1,11 @@
 ---
-import PageLayout from '../layouts/PageLayout.astro';
+import InnerPageLayout from '../layouts/InnerPageLayout.astro';
+import pageHtml from '../components/pages/nasdaq.html?raw';
 
-const title = "NASDAQ";
-const description = "[akw_table_all_stocks exchange=NAS]";
-const htmlContent = "[akw_table_all_stocks exchange=NAS]";
+const title = 'NASDAQ';
+const description = 'NASDAQ aandelenoverzicht op FinancieleBegrippen.com';
 ---
 
-<PageLayout title={title} description={description}>
-  <div set:html={htmlContent} />
-</PageLayout>
+<InnerPageLayout title={title} description={description}>
+  <Fragment set:html={pageHtml} />
+</InnerPageLayout>

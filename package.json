@@ -10,7 +10,14 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "migrate": "node scripts/migrate-wordpress.mjs"
+    "migrate": "node scripts/migrate-wordpress.mjs",
+    "homepage:extract": "curl -sL https://financielebegrippen.com/ -o scripts/homepage.html && node scripts/extract-homepage.mjs && node scripts/postprocess-homepage.mjs",
+    "inner-pages:extract": "node scripts/extract-inner-pages.mjs",
+    "sitemap:generate": "node scripts/generate-sitemap-data.mjs",
+    "vermogen-van:import": "node scripts/import-vermogen-van.mjs",
+    "custom-pages:import": "node scripts/import-live-pages.mjs --all-custom",
+    "stock-pages:create": "node scripts/create-stock-footer-pages.mjs",
+    "audit:404s": "node scripts/audit-404s.mjs"
   },
   "dependencies": {
     "astro": "^7.0.6"

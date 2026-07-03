@@ -1,0 +1,77 @@
+---
+import styles from '../components/homepage/styles.json';
+import SiteFavicon from '../components/SiteFavicon.astro';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = 'Home - Financiële Begrippen',
+  description = 'Weet alles over Financiële Begrippen. Op deze website kun je alle informatie vinden die je nodig hebt om je financiën te begrijpen.',
+} = Astro.props;
+
+const cssFiles = styles.cssFiles as string[];
+---
+
+<!doctype html>
+<html lang="nl-NL">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <link rel="canonical" href="https://financielebegrippen.com/" />
+    <meta property="og:locale" content="nl_NL" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content="https://financielebegrippen.com/" />
+    <meta property="og:site_name" content="Financiële Begrippen" />
+    <meta property="og:image" content="/wp-content/uploads/2023/01/rafiki.svg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <SiteFavicon />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Montserrat:400,700|DM+Sans:400,500,600,700&display=swap"
+    />
+    {cssFiles.map((href) => (
+      <link rel="stylesheet" href={href} />
+    ))}
+    <link rel="stylesheet" href="/wp-content/uploads/elementor/css/post-4471.css" />
+    <link rel="stylesheet" href="/wp-content/uploads/elementor/css/post-4472.css" />
+    <link rel="stylesheet" href="/wp-content/uploads/elementor/css/post-4479.css" />
+    <link rel="stylesheet" href="/wp-content/uploads/elementor/css/post-4522.css" />
+    <link rel="stylesheet" href="/css/homepage/navbar-fixes.css" />
+    <link rel="stylesheet" href="/css/homepage/homepage-posts-fixes.css" />
+    <link rel="stylesheet" href="/css/homepage/footer-fixes.css" />
+    <link rel="stylesheet" href="/css/homepage/homepage-icon-font-fixes.css" />
+  </head>
+  <body class="home wp-singular page-template page-template-elementor_header_footer page wp-theme-woohoo elementor-default elementor-template-full-width elementor-kit-4471 elementor-page elementor-page-4479">
+    <slot />
+    <script src="/js/homepage/swiper.min.js" defer></script>
+    <script src="/js/site-nav.js" defer></script>
+    <script src="/js/homepage/homepage.js" defer></script>
+  </body>
+</html>
+
+<style is:global>
+  body {
+    margin: 0;
+    padding: 0;
+  }
+  .elementor-screen-only,
+  .screen-reader-text {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+  }
+</style>

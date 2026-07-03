@@ -1,11 +1,22 @@
 ---
+import { getCollection } from 'astro:content';
 import PageLayout from '../layouts/PageLayout.astro';
+import HubLinks from '../components/HubLinks.astro';
+import { groupEuroLenen } from '../lib/hub-pages';
 
-const title = "Euro lenen";
-const description = "[zb_mpx_category_links sheet_id=\"1QZnuvAm3_eD9mxl8QlxFsLjP2m1h8_n7OZG16JnJ-rY\" category=\"lenen\"]";
-const htmlContent = "";
+const title = 'Euro lenen';
+const description =
+  'Overzicht van alle euro lenen pagina\'s op FinancieleBegrippen.com — van kleine tot grote bedragen.';
+const pubDate = new Date('2024-02-29');
+
+const entries = await getCollection('blog');
+const groups = groupEuroLenen(entries);
 ---
 
-<PageLayout title={title} description={description}>
-  <div set:html={htmlContent} />
+<PageLayout title={title} description={description} pubDate={pubDate}>
+  <p class="hub-page-intro">
+    Bekijk alle bedragen waarvoor je informatie vindt over euro lenen. Klik op een bedrag voor het
+    volledige artikel.
+  </p>
+  <HubLinks groups={groups} />
 </PageLayout>

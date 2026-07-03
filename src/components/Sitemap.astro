@@ -1,0 +1,104 @@
+---
+import sitemapData from '../data/sitemap-data.json';
+
+const { pages, customPosts, categories } = sitemapData;
+---
+
+<div class="wsp-container">
+  <h2 class="wsp-pages-title">Pagina's</h2>
+  <ul class="wsp-pages-list">
+    {pages.map((page) => (
+      <li class="wsp-item">
+        <a href={page.href}>{page.title}</a>
+      </li>
+    ))}
+  </ul>
+
+  <h2 class="wsp-posts-title">Custom Posts</h2>
+  <ul class="wsp-posts-list">
+    {customPosts.map((post) => (
+      <li class="wsp-item">
+        <a href={post.href}>{post.title}</a>
+      </li>
+    ))}
+  </ul>
+
+  <h2 class="wsp-categories-title">Berichten per categorie</h2>
+  <ul class="wsp-categories-list">
+    {categories.map((section) => (
+      <li class="wsp-category">
+        <strong class="wsp-category-title">{section.label}</strong>
+        <ul class="wsp-category-list">
+          {section.links.map((link) => (
+            <li class="wsp-item">
+              <a href={link.href}>{link.title}</a>
+            </li>
+          ))}
+        </ul>
+      </li>
+    ))}
+  </ul>
+</div>
+
+<style>
+  .wsp-container {
+    max-width: 100%;
+  }
+  .wsp-container h2 {
+    font-family: Montserrat, sans-serif;
+    font-size: 1.25rem;
+    margin: 2rem 0 1rem;
+    color: #1a365d;
+  }
+  .wsp-container h2:first-child {
+    margin-top: 0;
+  }
+  .wsp-pages-list,
+  .wsp-posts-list,
+  .wsp-categories-list,
+  .wsp-category-list {
+    list-style: none;
+    margin: 0 0 1.5rem;
+    padding: 0;
+  }
+  .wsp-pages-list,
+  .wsp-posts-list {
+    columns: 2;
+    column-gap: 2rem;
+  }
+  .wsp-category {
+    margin-bottom: 1.25rem;
+    break-inside: avoid;
+  }
+  .wsp-category-title {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+    color: #2d3748;
+  }
+  .wsp-category-list {
+    columns: 2;
+    column-gap: 2rem;
+    padding-left: 0.5rem;
+  }
+  .wsp-item {
+    margin-bottom: 0.35rem;
+    break-inside: avoid;
+  }
+  .wsp-item a {
+    color: #2b6cb0;
+    text-decoration: none;
+    font-size: 0.95rem;
+    line-height: 1.4;
+  }
+  .wsp-item a:hover {
+    text-decoration: underline;
+  }
+  @media (max-width: 768px) {
+    .wsp-pages-list,
+    .wsp-posts-list,
+    .wsp-category-list {
+      columns: 1;
+    }
+  }
+</style>

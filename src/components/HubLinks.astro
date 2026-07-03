@@ -1,0 +1,28 @@
+---
+import type { HubGroup } from '../lib/hub-pages';
+
+interface Props {
+  groups: HubGroup[];
+}
+
+const { groups } = Astro.props;
+---
+
+<div class="zbmp-category-links hub-page-links" role="navigation" aria-label="Overzicht">
+  {
+    groups.map((group) => (
+      <section class="alpha-group" id={`hub-${group.key}`} aria-labelledby={`hub-label-${group.key}`}>
+        <span class="hub-group__letter" id={`hub-label-${group.key}`}>
+          {group.key}
+        </span>
+        <ul>
+          {group.links.map((link) => (
+            <li>
+              <a href={link.href}>{link.label}</a>
+            </li>
+          ))}
+        </ul>
+      </section>
+    ))
+  }
+</div>

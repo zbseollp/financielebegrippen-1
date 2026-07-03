@@ -1,0 +1,344 @@
+/* Homepage navbar fixes — submenus, spacing, alignment (no Elementor Pro JS) */
+
+/* Header bar layout */
+.elementor-4472 .elementor-element-ac53860 > .elementor-container {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 12px 20px;
+  gap: 16px;
+}
+
+.elementor-4472 .elementor-element-d860d50 {
+  flex: 0 0 auto;
+  width: auto !important;
+  max-width: 200px;
+}
+
+.elementor-4472 .elementor-element-d6e53a3 {
+  flex: 1 1 auto;
+  width: auto !important;
+  min-width: 0;
+  max-width: none !important;
+}
+
+.elementor-4472 .elementor-element-21aae0b {
+  flex: 0 0 auto;
+  width: auto !important;
+  align-self: center;
+}
+
+/* Override Elementor 33% column grid */
+.elementor-4472 .elementor-element-ac53860 > .elementor-container > .elementor-column {
+  width: auto !important;
+}
+
+/* Header must not clip dropdown panels */
+.elementor-4472.elementor-location-header {
+  position: relative;
+  z-index: 1000;
+  overflow: visible !important;
+}
+
+.elementor-4472 .elementor-element-ac53860,
+.elementor-4472 .elementor-element-d6e53a3,
+.elementor-4472 .elementor-element-acaee8b,
+.elementor-4472 .elementor-nav-menu--main,
+.elementor-4472 .elementor-nav-menu--main .elementor-nav-menu {
+  overflow: visible !important;
+}
+
+/* Logo */
+.elementor-4472 .elementor-element-031766c img {
+  width: 200px !important;
+  height: auto !important;
+  max-width: 100%;
+  display: block;
+}
+
+/* Disable Elementor underline/highlight pseudo-elements on main nav */
+.elementor-4472 .elementor-nav-menu--main.e--pointer-none .elementor-item::before,
+.elementor-4472 .elementor-nav-menu--main.e--pointer-none .elementor-item::after {
+  display: none !important;
+  content: none !important;
+  opacity: 0 !important;
+}
+
+/* Main horizontal nav */
+.elementor-4472 .elementor-nav-menu--main.elementor-nav-menu--layout-horizontal .elementor-nav-menu {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  column-gap: 0;
+  row-gap: 6px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.elementor-4472 .elementor-nav-menu--main .elementor-nav-menu > li {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  flex: 0 0 auto;
+}
+
+.elementor-4472 .elementor-nav-menu--main .elementor-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  white-space: nowrap;
+  flex-grow: 0 !important;
+  flex-shrink: 0;
+  padding: 6px 10px !important;
+  font-size: 12.5px;
+  line-height: 1.35;
+  text-decoration: none;
+  color: #fff;
+  position: relative;
+}
+
+.elementor-4472 .elementor-nav-menu--main .elementor-item:hover,
+.elementor-4472 .elementor-nav-menu--main .elementor-item:focus {
+  opacity: 0.92;
+}
+
+/* Dropdown caret icon (injected by site-nav.js) */
+.elementor-4472 .elementor-nav-menu .sub-arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.elementor-4472 .elementor-nav-menu--main .sub-arrow {
+  margin-inline-start: 2px;
+}
+
+.elementor-4472 .elementor-nav-menu .sub-arrow i {
+  font-size: 9px;
+  line-height: 1;
+  opacity: 0.9;
+  pointer-events: none;
+  transition: transform 0.2s ease;
+}
+
+.elementor-4472 .elementor-nav-menu--main > .elementor-nav-menu > li.menu-item-has-children:hover .sub-arrow i,
+.elementor-4472 .elementor-nav-menu--main > .elementor-nav-menu > li.menu-item-has-children.is-submenu-open .sub-arrow i,
+.elementor-4472 .elementor-nav-menu--main > .elementor-nav-menu > li.menu-item-has-children:focus-within .sub-arrow i {
+  transform: rotate(180deg);
+}
+
+/* Submenus: hidden by default, shown as floating panels on hover/focus */
+.elementor-4472 .elementor-nav-menu--main > .elementor-nav-menu > li.menu-item-has-children > ul.sub-menu.elementor-nav-menu--dropdown {
+  display: none;
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 50%;
+  transform: translateX(-50%);
+  min-width: 240px;
+  max-height: 70vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 6px 0;
+  list-style: none;
+  background-color: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 8px;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.14);
+  z-index: 10001;
+}
+
+.elementor-4472 .elementor-nav-menu--main > .elementor-nav-menu > li.menu-item-has-children:hover > ul.sub-menu.elementor-nav-menu--dropdown,
+.elementor-4472 .elementor-nav-menu--main > .elementor-nav-menu > li.menu-item-has-children.is-submenu-open > ul.sub-menu.elementor-nav-menu--dropdown,
+.elementor-4472 .elementor-nav-menu--main > .elementor-nav-menu > li.menu-item-has-children:focus-within > ul.sub-menu.elementor-nav-menu--dropdown {
+  display: block !important;
+}
+
+.elementor-4472 .elementor-nav-menu--main .sub-menu > li {
+  display: block;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.elementor-4472 .elementor-nav-menu--main .sub-menu .elementor-sub-item {
+  display: block;
+  padding: 10px 18px !important;
+  white-space: nowrap;
+  color: #2d3748 !important;
+  font-size: 14px;
+  line-height: 1.35;
+  text-decoration: none;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.elementor-4472 .elementor-nav-menu--main .sub-menu .elementor-sub-item:hover,
+.elementor-4472 .elementor-nav-menu--main .sub-menu .elementor-sub-item:focus {
+  background-color: #f0f6ff;
+  color: #2c72cd !important;
+}
+
+/* Euro lenen amounts — compact 2-column grid */
+.elementor-4472 .elementor-nav-menu--main > .elementor-nav-menu > li.menu-item-27061 > ul.sub-menu.elementor-nav-menu--dropdown {
+  min-width: 180px;
+  display: none;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0;
+  padding: 6px 0;
+  max-height: none;
+}
+
+.elementor-4472 .elementor-nav-menu--main > .elementor-nav-menu > li.menu-item-27061:hover > ul.sub-menu.elementor-nav-menu--dropdown,
+.elementor-4472 .elementor-nav-menu--main > .elementor-nav-menu > li.menu-item-27061.is-submenu-open > ul.sub-menu.elementor-nav-menu--dropdown,
+.elementor-4472 .elementor-nav-menu--main > .elementor-nav-menu > li.menu-item-27061:focus-within > ul.sub-menu.elementor-nav-menu--dropdown {
+  display: grid !important;
+}
+
+.elementor-4472 .elementor-nav-menu--main .menu-item-27061 .sub-menu .elementor-sub-item {
+  padding: 9px 12px !important;
+  text-align: center;
+  font-size: 13px;
+}
+
+/* Nav widget fills center column */
+.elementor-4472 .elementor-element-acaee8b.elementor-nav-menu--stretch {
+  width: 100%;
+}
+
+.elementor-4472 .elementor-element-acaee8b .elementor-widget-container {
+  position: relative;
+  width: 100%;
+}
+
+/* Contact button alignment */
+.elementor-4472 .elementor-element-f835a55 .elementor-button {
+  white-space: nowrap;
+  padding: 10px 20px;
+  font-size: 14px;
+  line-height: 1.2;
+}
+
+.elementor-4472 .elementor-element-21aae0b .elementor-widget-wrap {
+  justify-content: flex-end;
+  align-items: center;
+}
+
+/* Wider screens: slightly larger nav text */
+@media (min-width: 1200px) {
+  .elementor-4472 .elementor-nav-menu--main .elementor-item {
+    padding: 6px 12px !important;
+    font-size: 13px;
+  }
+
+  .elementor-4472 .elementor-element-031766c img {
+    width: 220px !important;
+  }
+}
+
+/* Desktop: hide mobile burger duplicate menu */
+@media (min-width: 1025px) {
+  .elementor-4472 .elementor-element-acaee8b > .elementor-widget-container > .elementor-nav-menu--dropdown {
+    display: none !important;
+  }
+
+  .elementor-4472 .elementor-element-acaee8b .elementor-menu-toggle {
+    display: none !important;
+  }
+}
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .elementor-4472 .elementor-element-031766c img {
+    width: 170px !important;
+  }
+
+  .elementor-4472 .elementor-nav-menu--main {
+    display: none !important;
+  }
+
+  .elementor-4472 .elementor-element-acaee8b .elementor-menu-toggle {
+    display: flex !important;
+  }
+
+  .elementor-4472 .elementor-element-acaee8b .elementor-nav-menu--dropdown.elementor-nav-menu--dropdown-open {
+    display: block !important;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    left: 0;
+    background: #2c72cd;
+    z-index: 9999;
+    max-height: 80vh;
+    overflow-y: auto;
+    padding: 12px 0;
+    border-radius: 0 0 8px 8px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  }
+
+  .elementor-4472 .elementor-element-acaee8b .elementor-nav-menu--dropdown .elementor-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 20px !important;
+    font-size: 15px;
+  }
+
+  .elementor-4472 .elementor-element-acaee8b .elementor-nav-menu--dropdown .sub-arrow i {
+    font-size: 11px;
+  }
+
+  .elementor-4472 .elementor-element-acaee8b .elementor-nav-menu--dropdown .sub-menu {
+    position: static !important;
+    display: none !important;
+    box-shadow: none;
+    padding: 0;
+    margin: 0;
+    background: rgba(0, 0, 0, 0.12);
+    border-radius: 0;
+  }
+
+  .elementor-4472 .elementor-element-acaee8b .elementor-nav-menu--dropdown .menu-item-has-children.is-submenu-open > .sub-menu {
+    display: block !important;
+  }
+
+  .elementor-4472 .elementor-element-acaee8b .elementor-nav-menu--dropdown .sub-menu .elementor-sub-item {
+    padding: 10px 20px 10px 32px !important;
+    color: #fff !important;
+    font-size: 14px;
+  }
+
+  .elementor-4472 .elementor-element-acaee8b .elementor-nav-menu--dropdown .sub-menu .elementor-sub-item:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff !important;
+  }
+
+  .elementor-4472 .elementor-element-acaee8b .elementor-nav-menu--dropdown .menu-item-has-children.is-submenu-open .sub-arrow i {
+    transform: rotate(180deg);
+  }
+
+  .elementor-4472 .elementor-element-21aae0b {
+    display: none !important;
+  }
+}
+
+/* Mobile */
+@media (max-width: 767px) {
+  .elementor-4472 .elementor-element-ac53860 > .elementor-container {
+    flex-wrap: wrap;
+    padding: 10px 16px;
+  }
+
+  .elementor-4472 .elementor-element-031766c img {
+    width: 150px !important;
+  }
+}

@@ -1,0 +1,41 @@
+/* Vermogen van celebrity pages — FAQ lists and related links */
+.vermogen-van-article h2 {
+  margin-top: 1.75em;
+}
+
+.vermogen-van-article ul {
+  padding-left: 1.25em;
+}
+
+.vermogen-van-article .zbmp-breadcrumb {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.5em;
+  font-size: 14px;
+  color: #4a5568;
+}
+
+.vermogen-van-article .zbmp-breadcrumb li {
+  display: inline;
+}
+
+.vermogen-van-article .zbmp-breadcrumb li::after {
+  content: ' > ';
+}
+
+.vermogen-van-article .zbmp-breadcrumb li:last-child::after {
+  content: '';
+}
+
+.vermogen-van-article details {
+  margin: 0.75em 0;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  padding: 0.5em 1em;
+}
+
+.vermogen-van-article summary {
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--e-global-color-primary, #1a365d);
+}

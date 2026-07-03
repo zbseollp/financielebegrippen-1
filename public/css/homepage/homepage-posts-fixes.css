@@ -1,0 +1,115 @@
+/* Homepage "Recente artikelen" posts grid — fixes without Elementor Pro JS */
+
+/* Grid alignment: don't stretch cards to equal height */
+.elementor-4479 .elementor-element-50d2e77 .elementor-posts-container:not(.elementor-posts-masonry) {
+  align-items: start;
+}
+
+.elementor-4479 .elementor-element-50d2e77 .elementor-posts-container {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+
+@media (max-width: 1024px) {
+  .elementor-4479 .elementor-element-50d2e77 .elementor-posts-container {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 767px) {
+  .elementor-4479 .elementor-element-50d2e77 .elementor-posts-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Card layout */
+.elementor-4479 .elementor-element-50d2e77 .elementor-post {
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  min-height: 0;
+}
+
+.elementor-4479 .elementor-element-50d2e77 .elementor-post__text {
+  display: block;
+  flex-grow: 0;
+}
+
+.elementor-4479 .elementor-element-50d2e77 .elementor-post__excerpt {
+  flex-grow: 0;
+}
+
+/* Thumbnail: disable Elementor ratio padding hack (needs Pro JS) */
+.elementor-4479 .elementor-element-50d2e77 .elementor-posts-container .elementor-post__thumbnail {
+  padding-bottom: 0 !important;
+  height: auto;
+  position: relative;
+  overflow: hidden;
+  border-radius: 4px;
+}
+
+.elementor-4479 .elementor-element-50d2e77 .elementor-post__thumbnail__link {
+  display: block;
+  margin-bottom: 16px;
+  line-height: 0;
+}
+
+.elementor-4479 .elementor-element-50d2e77 .elementor-posts-container .elementor-post__thumbnail img {
+  position: static !important;
+  transform: none !important;
+  left: auto !important;
+  top: auto !important;
+  width: 100%;
+  height: auto;
+  display: block;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+}
+
+/* Section heading spacing */
+.elementor-4479 .elementor-element-4d46a78 .elementor-heading-title {
+  margin: 0 0 8px;
+}
+
+.elementor-4479 .elementor-element-4112e4f {
+  padding-top: 48px;
+  padding-bottom: 8px;
+}
+
+.elementor-4479 .elementor-element-32bb213 {
+  padding-top: 0;
+  padding-bottom: 48px;
+}
+
+/* Typography tweaks */
+.elementor-4479 .elementor-element-50d2e77 .elementor-post__title {
+  margin-bottom: 12px;
+  line-height: 1.3;
+}
+
+.elementor-4479 .elementor-element-50d2e77 .elementor-post__title a {
+  display: block;
+}
+
+.elementor-4479 .elementor-element-50d2e77 .elementor-post__meta-data {
+  margin-bottom: 10px;
+}
+
+.elementor-4479 .elementor-element-50d2e77 .elementor-post__excerpt p {
+  line-height: 1.55;
+}
+
+@media (max-width: 1024px) {
+  .elementor-4479 .elementor-element-50d2e77 .elementor-post__title,
+  .elementor-4479 .elementor-element-50d2e77 .elementor-post__title a {
+    font-size: 22px;
+  }
+}
+
+@media (max-width: 767px) {
+  .elementor-4479 .elementor-element-50d2e77 .elementor-post__title,
+  .elementor-4479 .elementor-element-50d2e77 .elementor-post__title a {
+    font-size: 20px;
+  }
+}

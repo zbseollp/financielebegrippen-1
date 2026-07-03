@@ -1,0 +1,171 @@
+/* Hub/index pages: vermogen-van, euro-lenen, achteraf-betalen */
+
+.elementor-36361 .hub-page-content.inner-article-content {
+  color: #4a5568;
+}
+
+.elementor-36361 .hub-page-intro {
+  margin: 0 0 1.75rem;
+  font-size: 16px;
+  line-height: 1.75;
+  color: #4a5568;
+  max-width: 52rem;
+}
+
+/* Main link grid */
+.elementor-36361 .hub-page-links.zbmp-category-links {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 20px 16px;
+  margin: 0;
+  padding: 0;
+}
+
+.elementor-36361 .hub-page-links .alpha-group {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 14px 14px 12px;
+  min-width: 0;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.elementor-36361 .hub-page-links .alpha-group:hover {
+  border-color: #cbd5e0;
+  box-shadow: 0 4px 14px rgba(34, 54, 69, 0.06);
+}
+
+.elementor-36361 .hub-page-links .hub-group__letter {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 34px;
+  height: 34px;
+  padding: 0 10px;
+  margin: 0 0 12px;
+  border-radius: 8px;
+  background: var(--e-global-color-primary, #223645);
+  color: #fff;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.02em;
+}
+
+.elementor-36361 .hub-page-links .alpha-group ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.elementor-36361 .hub-page-links .alpha-group li {
+  margin: 0;
+  padding: 0;
+}
+
+.elementor-36361 .hub-page-links .alpha-group li + li {
+  margin-top: 2px;
+}
+
+.elementor-36361 .hub-page-links .alpha-group a {
+  display: block;
+  padding: 5px 8px;
+  margin: 0 -8px;
+  border-radius: 6px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  line-height: 1.45;
+  color: var(--e-global-color-accent, #2c72cd);
+  text-decoration: none;
+  transition: background-color 0.12s ease, color 0.12s ease;
+}
+
+.elementor-36361 .hub-page-links .alpha-group a:hover {
+  background: rgba(44, 114, 205, 0.08);
+  color: #1a4f8f;
+  text-decoration: none;
+}
+
+/* Sidebar TOC — compact letter jump grid on hub pages */
+.elementor-36361 .inner-article-toc.hub-page-toc .elementor-toc__body {
+  padding-top: 4px;
+}
+
+.elementor-36361 .inner-article-toc.hub-page-toc .hub-toc-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.elementor-36361 .inner-article-toc.hub-page-toc .hub-toc-grid li {
+  margin: 0;
+  padding: 0;
+}
+
+.elementor-36361 .inner-article-toc.hub-page-toc .hub-toc-grid a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 36px;
+  padding: 6px 4px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  background: #fff;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--e-global-color-primary, #223645);
+  text-decoration: none;
+  transition: background-color 0.12s ease, border-color 0.12s ease, color 0.12s ease;
+}
+
+.elementor-36361 .inner-article-toc.hub-page-toc .hub-toc-grid a:hover {
+  background: var(--e-global-color-accent, #2c72cd);
+  border-color: var(--e-global-color-accent, #2c72cd);
+  color: #fff;
+}
+
+@media (max-width: 1200px) {
+  .elementor-36361 .hub-page-links.zbmp-category-links {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 1024px) {
+  .elementor-36361 .hub-page-links.zbmp-category-links {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .elementor-36361 .inner-article-toc.hub-page-toc .hub-toc-grid {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 767px) {
+  .elementor-36361 .hub-page-links.zbmp-category-links {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px 12px;
+  }
+
+  .elementor-36361 .hub-page-links .alpha-group {
+    padding: 12px;
+  }
+
+  .elementor-36361 .inner-article-toc.hub-page-toc .hub-toc-grid {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 480px) {
+  .elementor-36361 .hub-page-links.zbmp-category-links {
+    grid-template-columns: 1fr;
+  }
+
+  .elementor-36361 .inner-article-toc.hub-page-toc .hub-toc-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}

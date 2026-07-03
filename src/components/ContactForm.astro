@@ -1,0 +1,97 @@
+---
+/** Elementor contact form (post 4572) — matches live /contact/ */
+---
+
+<div class="elementor elementor-4572 contact-page-form" data-elementor-type="wp-page" data-elementor-id="4572">
+  <section
+    class="elementor-section elementor-top-section elementor-element elementor-element-bfc7cc2 elementor-section-boxed elementor-section-height-default elementor-section-height-default"
+    data-id="bfc7cc2"
+    data-element_type="section"
+  >
+    <div class="elementor-container elementor-column-gap-default">
+      <div
+        class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-4f5dd1e"
+        data-id="4f5dd1e"
+        data-element_type="column"
+      >
+        <div class="elementor-widget-wrap elementor-element-populated">
+          <div
+            class="elementor-element elementor-element-6dcc6ef elementor-button-align-stretch elementor-widget elementor-widget-form"
+            data-id="6dcc6ef"
+            data-element_type="widget"
+            data-widget_type="form.default"
+          >
+            <div class="elementor-widget-container">
+              <form
+                class="elementor-form"
+                method="post"
+                name="Contact"
+                aria-label="Contact"
+                id="contact-form"
+              >
+                <input type="hidden" name="post_id" value="4572" />
+                <input type="hidden" name="form_id" value="6dcc6ef" />
+                <input type="hidden" name="referer_title" value="Contact - Financiële Begrippen" />
+                <input type="hidden" name="queried_id" value="4572" />
+
+                <div class="elementor-form-fields-wrapper elementor-labels-above">
+                  <div
+                    class="elementor-field-type-text elementor-field-group elementor-column elementor-field-group-name elementor-col-100"
+                  >
+                    <label for="form-field-name" class="elementor-field-label">Naam</label>
+                    <input
+                      size="1"
+                      type="text"
+                      name="form_fields[name]"
+                      id="form-field-name"
+                      class="elementor-field elementor-size-sm elementor-field-textual"
+                      placeholder="Naam"
+                      required
+                    />
+                  </div>
+                  <div
+                    class="elementor-field-type-email elementor-field-group elementor-column elementor-field-group-email elementor-col-100 elementor-field-required"
+                  >
+                    <label for="form-field-email" class="elementor-field-label">Email</label>
+                    <input
+                      size="1"
+                      type="email"
+                      name="form_fields[email]"
+                      id="form-field-email"
+                      class="elementor-field elementor-size-sm elementor-field-textual"
+                      placeholder="Email"
+                      required
+                    />
+                  </div>
+                  <div
+                    class="elementor-field-type-textarea elementor-field-group elementor-column elementor-field-group-message elementor-col-100"
+                  >
+                    <label for="form-field-message" class="elementor-field-label">Bericht</label>
+                    <textarea
+                      class="elementor-field-textual elementor-field elementor-size-sm"
+                      name="form_fields[message]"
+                      id="form-field-message"
+                      rows="4"
+                      placeholder="Bericht"
+                      required
+                    ></textarea>
+                  </div>
+                  <div
+                    class="elementor-field-group elementor-column elementor-field-type-submit elementor-col-100 e-form__buttons"
+                  >
+                    <button class="elementor-button elementor-size-sm" type="submit">
+                      <span class="elementor-button-content-wrapper">
+                        <span class="elementor-button-text">Versturen</span>
+                      </span>
+                    </button>
+                  </div>
+                </div>
+              </form>
+              <div class="contact-form-message" id="contact-form-message" hidden role="status"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

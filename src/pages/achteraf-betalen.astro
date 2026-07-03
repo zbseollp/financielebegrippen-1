@@ -1,11 +1,22 @@
 ---
+import { getCollection } from 'astro:content';
 import PageLayout from '../layouts/PageLayout.astro';
+import HubLinks from '../components/HubLinks.astro';
+import { groupAchterafBetalen } from '../lib/hub-pages';
 
-const title = "Achteraf betalen";
-const description = "[zb_mpx_category_links sheet_id=\"1BV8ATXqfypuldwlCJPrTbkczSvn8p9w-eyVTANfoluw\" category=\"achteraf betalen\"]";
-const htmlContent = "";
+const title = 'Achteraf betalen';
+const description =
+  'Overzicht van alle achteraf betalen pagina\'s op FinancieleBegrippen.com — producten en diensten op rekening.';
+const pubDate = new Date('2024-03-06');
+
+const entries = await getCollection('blog');
+const groups = groupAchterafBetalen(entries);
 ---
 
-<PageLayout title={title} description={description}>
-  <div set:html={htmlContent} />
+<PageLayout title={title} description={description} pubDate={pubDate}>
+  <p class="hub-page-intro">
+    Kies hieronder een onderwerp om meer te lezen. Alle pagina&apos;s zijn gegroepeerd voor een
+    snel overzicht.
+  </p>
+  <HubLinks groups={groups} />
 </PageLayout>

@@ -1,6 +1,8 @@
 ---
-import { getCollection, render } from 'astro:content';
+import { getCollection, getEntry, render } from 'astro:content';
 import BlogPostLayout from '../layouts/BlogPostLayout.astro';
+
+export const prerender = true;
 
 export async function getStaticPaths() {
   const blogEntries = await getCollection('blog');
@@ -11,7 +13,25 @@ export async function getStaticPaths() {
   }));
 }
 
-const { entry } = Astro.props;
+function normalizeSlug(param) {
+  if (typeof param === 'string') return param;
+  if (Array.isArray(param)) return param.join('/');
+  return '';
+}
+
+let { entry } = Astro.props;
+
+if (!entry) {
+  const slug = normalizeSlug(Astro.params.slug);
+  if (slug) {
+    entry = await getEntry('blog', slug);
+  }
+}
+
+if (!entry) {
+  return Astro.redirect('/404/', 404);
+}
+
 const { Content } = await render(entry);
 ---
 

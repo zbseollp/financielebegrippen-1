@@ -1,0 +1,50 @@
+---
+import { getCollection } from 'astro:content';
+
+interface Props {
+  excludeSlug?: string;
+  limit?: number;
+}
+
+const { excludeSlug, limit = 3 } = Astro.props;
+
+const posts = (await getCollection('blog'))
+  .filter((p) => p.id !== excludeSlug)
+  .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime())
+  .slice(0, limit);
+
+function formatDate(date: Date) {
+  return date.toLocaleDateString('nl-NL', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  });
+}
+---
+
+<div class="elementor-posts-container elementor-posts elementor-posts--skin-classic elementor-grid" role="list">
+  {
+    posts.map((post) => (
+      <article
+        class="elementor-post elementor-grid-item"
+        role="listitem"
+      >
+        <div class="elementor-post__text">
+          <p class="elementor-post__title">
+            <a href={`/${post.id}/`}>{post.data.title}</a>
+          </p>
+          <div class="elementor-post__meta-data">
+            <span class="elementor-post-date">{formatDate(post.data.pubDate)}</span>
+          </div>
+          <a
+            class="elementor-post__read-more"
+            href={`/${post.id}/`}
+            aria-label={`Lees meer over ${post.data.title}`}
+          >
+            Lees verder »
+          </a>
+        </div>
+      </article>
+    ))
+  }
+</div>

@@ -1,0 +1,46 @@
+/* Elementor eicons — broken plugin-relative paths in extracted CSS */
+@font-face {
+  font-display: swap;
+  font-family: eicons;
+  src: url('/css/homepage/eicons.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* Font Awesome Brands — social icons in footer */
+@font-face {
+  font-family: 'Font Awesome 5 Brands';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/css/homepage/fa-brands-400.woff2') format('woff2');
+}
+
+/* Font Awesome Regular — calendar icon in post meta */
+@font-face {
+  font-family: 'Font Awesome 5 Free';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/css/homepage/fa-regular-400.woff2') format('woff2');
+}
+
+/* Font Awesome Solid — TOC chevrons */
+@font-face {
+  font-family: 'Font Awesome 5 Free';
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src: url('/css/homepage/fa-solid-900.woff2') format('woff2');
+}
+
+/* Testimonial star ratings (Ervaringen van onze bezoekers) */
+.elementor-4479 .elementor-element-8cbd09d .elementor-star-rating {
+  font-size: 20px;
+  line-height: 1;
+}
+
+.elementor-4479 .elementor-element-8cbd09d .elementor-star-rating i,
+.elementor-4479 .elementor-element-8cbd09d .elementor-star-rating i::before {
+  color: var(--e-global-color-accent, #2c72cd);
+}
