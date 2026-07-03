@@ -1,0 +1,11 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+
+const title = "NASDAQ";
+const description = "[akw_table_all_stocks exchange=NAS]";
+const htmlContent = "[akw_table_all_stocks exchange=NAS]";
+---
+
+<PageLayout title={title} description={description}>
+  <div set:html={htmlContent} />
+</PageLayout>

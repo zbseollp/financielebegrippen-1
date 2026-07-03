@@ -1,0 +1,11 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+
+const title = "Van Russisch naar Nederlands";
+const description = "Van Russisch naar Nederlands\r\nVertalen kan via onze eenvoudige tool. Deze staat reeds ingesteld om te vertalen van Spaans naar Russisch.\r\n\r\n\r\n\r\n\r\nvar dir=\"ru/nl";
+const htmlContent = "# Van Russisch naar Nederlands\n\n[Vertalen](/vertalen) kan via onze eenvoudige tool. Deze staat reeds ingesteld om te vertalen van Spaans naar Russisch. var dir=\"ru/nl\"; var loc=\"nl\";\n\n[Translator](//imtranslator.net/translation/ \"Translator - imtranslator.net\")\n\n## Woorden vertalen van Russisch naar Nederlands\n\nMet onze tool kun je woorden eenvoudig vertalen van het Spaans naar Russisch. Je kunt zelfs zinnen vertalen. De tool is gratis en zoveel als je wilt te gebruiken.";
+---
+
+<PageLayout title={title} description={description}>
+  <div set:html={htmlContent} />
+</PageLayout>

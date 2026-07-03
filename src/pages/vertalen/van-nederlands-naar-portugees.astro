@@ -1,0 +1,11 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+
+const title = "Van Nederlands naar Portugees";
+const description = "Van Nederlands naar Portugees vertalen\r\nVertalen kan via onze eenvoudige tool. Deze staat reeds ingesteld om te vertalen van Nederlands naar Portugees.";
+const htmlContent = "# Van Nederlands naar Portugees vertalen\n\n[Vertalen](/vertalen) kan via onze eenvoudige tool. Deze staat reeds ingesteld om te vertalen van Nederlands naar Portugees. var dir=\"nl/pt\"; var loc=\"nl\";\n\n[Translator](//imtranslator.net/translation/ \"Translator - imtranslator.net\")\n\n## Woorden vertalen van Nederlands naar Portugees\n\nMet onze tool kun je woorden eenvoudig vertalen van het Nederlands naar het Portugees. Je kunt zelfs zinnen vertalen. De tool is gratis en zoveel als je wilt te gebruiken.";
+---
+
+<PageLayout title={title} description={description}>
+  <div set:html={htmlContent} />
+</PageLayout>

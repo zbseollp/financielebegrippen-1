@@ -1,0 +1,11 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+
+const title = "Van Deens naar Nederlands";
+const description = "Van Deens naar Nederlands\r\nVertalen kan via onze eenvoudige tool. Deze staat reeds ingesteld om te vertalen van Deens naar Nederlands.\r\n\r\n\r\n\r\nvar dir=\"da/nl\";";
+const htmlContent = "# Van Deens naar Nederlands\n\n[Vertalen](/vertalen) kan via onze eenvoudige tool. Deze staat reeds ingesteld om te vertalen van Deens naar Nederlands. var dir=\"da/nl\"; var loc=\"nl\";\n\n[Translator](//imtranslator.net/translation/ \"Translator - imtranslator.net\")\n\n## Woorden vertalen van Deens naar Nederlands\n\nMet onze tool kun je woorden eenvoudig vertalen van het Deens naar Nederlands. Je kunt zelfs zinnen vertalen. De tool is gratis en zoveel als je wilt te gebruiken.";
+---
+
+<PageLayout title={title} description={description}>
+  <div set:html={htmlContent} />
+</PageLayout>

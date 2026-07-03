@@ -1,0 +1,11 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+
+const title = "Tips";
+const description = "Op deze pagina delen we tips voor sites die relatie hebben tot financiele begrippen:\r\n\r\nConsumentensites:\r\n\r\n \tConsumentenbond\r\n \tVereniging Eigen Huis\r\n\r\nOverh";
+const htmlContent = "Op deze pagina delen we tips voor sites die relatie hebben tot financiele begrippen: **Consumentensites:**\n\n*   [Consumentenbond](https://www.consumentenbond.nl)\n*   [Vereniging Eigen Huis](https://www.veh.nl)\n\n**Overheid:**\n\n*   [SVB](https://www.svb.nl)";
+---
+
+<PageLayout title={title} description={description}>
+  <div set:html={htmlContent} />
+</PageLayout>

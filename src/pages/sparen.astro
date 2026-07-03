@@ -1,0 +1,11 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+
+const title = "Sparen";
+const description = "Als u geld niet gebruikt maar als doel hebt om dit later te gebruiken dan wordt dit sparen genoemd. U legt een deel van uw inkomen opzij zodat u een bedrag opbo";
+const htmlContent = "Als u geld niet gebruikt maar als doel hebt om dit later te gebruiken dan wordt dit sparen genoemd. U legt een deel van uw inkomen opzij zodat u een bedrag opbouwt wat u spaart. U creeërt op deze manier een financieel buffer die u kunt gebruiken wanneer het u goed uitkomt.";
+---
+
+<PageLayout title={title} description={description}>
+  <div set:html={htmlContent} />
+</PageLayout>

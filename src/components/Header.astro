@@ -1,0 +1,90 @@
+---
+import navigation from '../data/navigation.json';
+
+type NavItem = {
+  title: string;
+  url: string;
+  children?: NavItem[];
+};
+
+const headerNav = (navigation.header || []) as NavItem[];
+---
+
+<header class="site-header">
+  <div class="header-inner">
+    <a href="/" class="logo">
+      <img src="/wp-content/uploads/2019/03/cropped-logo-e1478009116709.png" alt="Financiële Begrippen" width="200" height="50" onerror="this.style.display='none';this.nextElementSibling.style.display='block'" />
+      <span class="logo-text" style="display:none">Financiële Begrippen</span>
+    </a>
+    <nav class="main-nav" aria-label="Hoofdnavigatie">
+      <ul>
+        {headerNav.map((item) => (
+          <li>
+            <a href={item.url}>{item.title || 'Link'}</a>
+            {item.children && item.children.length > 0 && (
+              <ul class="submenu">
+                {item.children.map((child) => (
+                  <li>
+                    <a href={child.url}>{child.title}</a>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </li>
+        ))}
+        <li><a href="/blog/">Blog</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .site-header {
+    background: #1a365d;
+    color: white;
+    padding: 0.75rem 0;
+  }
+  .header-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  .logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: white;
+    font-weight: 700;
+    font-size: 1.25rem;
+  }
+  .logo img {
+    max-height: 50px;
+    width: auto;
+  }
+  .main-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem 1rem;
+  }
+  .main-nav a {
+    color: #e2e8f0;
+    text-decoration: none;
+    font-size: 0.9rem;
+    padding: 0.25rem 0;
+  }
+  .main-nav a:hover {
+    color: white;
+    text-decoration: underline;
+  }
+  .submenu {
+    display: none;
+  }
+</style>

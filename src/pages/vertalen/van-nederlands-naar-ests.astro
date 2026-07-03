@@ -1,0 +1,11 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+
+const title = "Van Nederlands naar Ests";
+const description = "Van Nederlands naar Ests vertalen\r\nVertalen kan via onze eenvoudige tool. Deze staat reeds ingesteld om te vertalen van Nederlands naar Ests.\r\n\r\n\r\n\r\nvar dir=\"nl";
+const htmlContent = "# Van Nederlands naar Ests vertalen\n\n[Vertalen](/vertalen) kan via onze eenvoudige tool. Deze staat reeds ingesteld om te vertalen van Nederlands naar Ests. var dir=\"nl/et\"; var loc=\"nl\";\n\n[Translator](//imtranslator.net/translation/ \"Translator - imtranslator.net\")\n\n## Woorden vertalen van Nederlands naar Ests\n\nMet onze tool kun je woorden eenvoudig vertalen van het Nederlands naar het Ests. Je kunt zelfs zinnen vertalen. De tool is gratis en zoveel als je wilt te gebruiken.";
+---
+
+<PageLayout title={title} description={description}>
+  <div set:html={htmlContent} />
+</PageLayout>

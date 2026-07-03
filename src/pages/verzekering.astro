@@ -1,0 +1,11 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+
+const title = "Verzekering";
+const description = "Met een verzekering kunt u een risico afdekken die u zelf niet kan of wil dragen. Dat is ook wel te begrijpen. Een nieuwe auto kost veel geld dat u waarschijnli";
+const htmlContent = "Met een verzekering kunt u een risico afdekken die u zelf niet kan of wil dragen. Dat is ook wel te begrijpen. Een nieuwe auto kost veel geld dat u waarschijnlijk niet klaar heeft liggen wanneer u de auto in de prak rijdt. Een autoverzekering is dan ook één van de meest afgesloten verzekeringen die er zijn. Doordat er veel verzekeraars met verschillende tarieven zoeken mensen naar de goedkoopste autoverzekering. Op verschillende websites zijn de premies van autoverzekeringen te vergelijken. Een goed voorbeeld van een veelvoorkomende verzekering is de [inboedelverzekering](https://www.poliswijzer.nl/woonverzekering/inboedelverzekering). Verzekeringen zijn volgens de wet onderverdeeld in twee soorten: schadeverzekeringen en sommenverzekeringen. Een autoverzekering valt bijvoorbeeld onder de schadeverzekeringen. Een sommenverzekering is bijvoorbeeld een levensverzekering. Deze keert een vooraf afgesproken bedrag uit bij een onzeker voorval.";
+---
+
+<PageLayout title={title} description={description}>
+  <div set:html={htmlContent} />
+</PageLayout>

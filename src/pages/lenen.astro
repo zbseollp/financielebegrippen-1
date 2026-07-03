@@ -1,0 +1,11 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+
+const title = "Lenen";
+const description = "Een boot of auto kopen op krediet kopen? Geld lenen is hedendaags de normaalste zaak van de wereld. Een autofinanciering of bootlening is populair maar ook geld";
+const htmlContent = "Een boot of auto kopen op krediet kopen? Geld lenen is hedendaags de normaalste zaak van de wereld. Een autofinanciering of bootlening is populair maar ook geld lenen voor een verbouwing is vaak het doel van de lening. Lenen betekent nu de lusten en later de lasten. Via het internet kunt u in contact komen met een geldverstrekker. De geldverstrekker biedt op het internet een offerte formulier aan die u kunt invullen. De geldverstrekker controleert uw gegevens en of u bij het BKR bekend bent. Een negatieve BKR codering betekent vaak dat u geen geld kunt lenen. Als u voldoet aan de voorwaarden van een lening ontvangt u vervolgens de offerte. Een zakelijke lening kan gebruikt worden voor diverse doeleinden. Denk hierbij aan het verhelpen van een liquiditeitsprobleem, het financieren van een overname of het doen van een investering in personeel of marketingcampagne. Op [ZakelijkLenen.nl](http://zakelijklenen.nl/) is veel informatie te vinden omtrent de typen zakelijke leningen.";
+---
+
+<PageLayout title={title} description={description}>
+  <div set:html={htmlContent} />
+</PageLayout>

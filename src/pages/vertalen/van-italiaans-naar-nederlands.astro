@@ -1,0 +1,11 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+
+const title = "Van Italiaans naar Nederlands";
+const description = "Van Italiaans naar Nederlands\r\nVertalen kan via onze eenvoudige tool. Deze staat reeds ingesteld om te vertalen van Italiaans naar Nederlands. Handig voor op va";
+const htmlContent = "# Van Italiaans naar Nederlands\n\n[Vertalen](/vertalen) kan via onze eenvoudige tool. Deze staat reeds ingesteld om te vertalen van Italiaans naar Nederlands. Handig voor op vakantie!. Bewaar deze pagina als je vaker woorden wilt vertalen. var dir=\"pt/nl\"; var loc=\"nl\";\n\n[Translator](//imtranslator.net/translation/ \"Translator - imtranslator.net\")\n\n## Woorden vertalen van Italiaans naar Nederlands\n\nMet onze tool kun je woorden eenvoudig vertalen van het Italiaans naar Nederlands. Je kunt zelfs zinnen vertalen. De tool is gratis en zoveel als je wilt te gebruiken.";
+---
+
+<PageLayout title={title} description={description}>
+  <div set:html={htmlContent} />
+</PageLayout>

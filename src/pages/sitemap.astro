@@ -1,0 +1,11 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+
+const title = "Sitemap";
+const description = "[wp_sitemap_page]";
+const htmlContent = "[wp_sitemap_page]";
+---
+
+<PageLayout title={title} description={description}>
+  <div set:html={htmlContent} />
+</PageLayout>

@@ -1,0 +1,11 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+
+const title = "Van Chinees naar Nederlands";
+const description = "Van Chinees naar Nederlands\r\nVertalen kan via onze eenvoudige tool. Deze staat reeds ingesteld om te vertalen van Chinees naar Nederlands.\r\n\r\n\r\n\r\n\r\nvar dir=\"zt/";
+const htmlContent = "# Van Chinees naar Nederlands\n\n[Vertalen](/vertalen) kan via onze eenvoudige tool. Deze staat reeds ingesteld om te vertalen van Chinees naar Nederlands. var dir=\"zt/nl\"; var loc=\"nl\";\n\n[Translator](//imtranslator.net/translation/ \"Translator - imtranslator.net\")\n\n## Woorden vertalen van Chinees naar Nederlands\n\nMet onze tool kun je woorden eenvoudig vertalen van het Chinees naar Nederlands. Je kunt zelfs zinnen vertalen. De tool is gratis en zoveel als je wilt te gebruiken.";
+---
+
+<PageLayout title={title} description={description}>
+  <div set:html={htmlContent} />
+</PageLayout>

@@ -1,0 +1,11 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+
+const title = "Contact";
+const description = "Wil je contact met de redactie van FinancieleBegrippen.nl of zou je een samenwerking met ons aan willen gaan?Neem dan contact op middels onderstaand contact for";
+const htmlContent = "Wil je contact met de redactie van FinancieleBegrippen.nl of zou je een samenwerking met ons aan willen gaan?\n\nNeem dan contact op middels onderstaand contact formulier. We streven er naar alle vragen binnen 24 uur te beantwoorden.";
+---
+
+<PageLayout title={title} description={description}>
+  <div set:html={htmlContent} />
+</PageLayout>

@@ -1,0 +1,102 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import categories from '../../data/categories.json';
+
+export function getStaticPaths() {
+  const letters = Object.keys(categories);
+  return letters.map((letter) => ({
+    params: { letter },
+    props: {
+      letter,
+      posts: (categories as Record<string, { title: string; slug: string }[]>)[letter] || [],
+    },
+  }));
+}
+
+const { letter, posts } = Astro.props;
+const sortedPosts = [...posts].sort((a, b) => a.title.localeCompare(b.title, 'nl'));
+---
+
+<BaseLayout
+  title={`Begrippen met ${letter.toUpperCase()}`}
+  description={`Financiële begrippen die beginnen met de letter ${letter.toUpperCase()}`}
+>
+  <div class="category-page">
+    <h1>Begrippen: {letter.toUpperCase()}</h1>
+    <p class="count">{sortedPosts.length} begrippen</p>
+    <ul class="term-list">
+      {sortedPosts.map((post) => (
+        <li>
+          <a href={`/${post.slug}/`}>{post.title}</a>
+        </li>
+      ))}
+    </ul>
+    <nav class="alpha-nav" aria-label="Alfabet navigatie">
+      {Object.keys(categories).sort().map((l) => (
+        <a href={`/category/${l}/`} class:list={[{ active: l === letter }]}>{l.toUpperCase()}</a>
+      ))}
+    </nav>
+  </div>
+</BaseLayout>
+
+<style>
+  .category-page {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem;
+  }
+  .category-page h1 {
+    font-size: 2rem;
+    color: #1a365d;
+    margin-bottom: 0.5rem;
+  }
+  .count {
+    color: #666;
+    margin-bottom: 1.5rem;
+  }
+  .term-list {
+    columns: 2;
+    column-gap: 2rem;
+    list-style: none;
+    padding: 0;
+    margin: 0 0 2rem;
+  }
+  @media (max-width: 600px) {
+    .term-list { columns: 1; }
+  }
+  .term-list li {
+    margin-bottom: 0.4rem;
+    break-inside: avoid;
+  }
+  .term-list a {
+    color: #2b6cb0;
+    text-decoration: none;
+  }
+  .term-list a:hover {
+    text-decoration: underline;
+  }
+  .alpha-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #e2e8f0;
+  }
+  .alpha-nav a {
+    display: inline-block;
+    width: 2rem;
+    height: 2rem;
+    line-height: 2rem;
+    text-align: center;
+    background: #e2e8f0;
+    border-radius: 4px;
+    color: #2d3748;
+    text-decoration: none;
+    font-weight: 600;
+  }
+  .alpha-nav a.active,
+  .alpha-nav a:hover {
+    background: #1a365d;
+    color: white;
+  }
+</style>
