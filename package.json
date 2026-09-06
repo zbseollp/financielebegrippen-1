@@ -17,7 +17,8 @@
     "vermogen-van:import": "node scripts/import-vermogen-van.mjs",
     "custom-pages:import": "node scripts/import-live-pages.mjs --all-custom",
     "stock-pages:create": "node scripts/create-stock-footer-pages.mjs",
-    "audit:404s": "node scripts/audit-404s.mjs"
+    "audit:404s": "node scripts/audit-404s.mjs",
+    "deploy": "npm run build && node scripts/guard-deploy.mjs && npx wrangler deploy"
   },
   "dependencies": {
     "astro": "^7.0.6"
