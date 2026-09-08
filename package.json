@@ -6,10 +6,12 @@
     "node": ">=22.12.0"
   },
   "scripts": {
-    "dev": "astro dev",
-    "build": "astro build",
+    "dev": "npm run prepare:blog && astro dev",
+    "build": "npm run prepare:blog && astro build && node scripts/assert-deploy.mjs",
     "preview": "astro preview",
     "astro": "astro",
+    "prepare:blog": "node scripts/remove-spam-blog.mjs && node scripts/strip-elementor-junk.mjs && node scripts/sanitize-blog.mjs",
+    "assert:deploy": "node scripts/assert-deploy.mjs",
     "migrate": "node scripts/migrate-wordpress.mjs",
     "homepage:extract": "curl -sL https://financielebegrippen.com/ -o scripts/homepage.html && node scripts/extract-homepage.mjs && node scripts/postprocess-homepage.mjs",
     "inner-pages:extract": "node scripts/extract-inner-pages.mjs",
