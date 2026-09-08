@@ -1,10 +1,48 @@
 ---
 import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import sitemapData from '../../data/sitemap-data.json';
 
-const posts = (await getCollection('blog'))
-  .filter((post) => post.data.categories?.includes('Blog'))
-  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+/**
+ * The migrated frontmatter lost the WordPress categories (every post ships
+ * `categories: []`), so the blog set comes from the "Categorie: BLOG" bucket in
+ * the captured sitemap data instead. Collection entries supply the metadata.
+ */
+type SitemapLink = { title: string; href: string };
+type SitemapCategory = { label: string; links: SitemapLink[] };
+
+const blogLinks =
+  (sitemapData.categories as SitemapCategory[]).find((cat) =>
+    cat.label.trim().toUpperCase().endsWith('BLOG'),
+  )?.links ?? [];
+
+/** Live hrefs are percent-encoded and some carry non-breaking hyphens (U+2011). */
+function slugFromHref(href: string) {
+  let slug = href;
+  try {
+    slug = decodeURIComponent(href);
+  } catch {
+    // keep the raw href when it is not valid percent-encoding
+  }
+  return slug.replace(/[‐-―]/g, '-').replace(/^\/|\/$/g, '');
+}
+
+const entriesById = new Map((await getCollection('blog')).map((entry) => [entry.id, entry]));
+
+const posts = blogLinks
+  .map((link) => {
+    const slug = slugFromHref(link.href);
+    const entry = entriesById.get(slug);
+    if (!entry) return null;
+    return {
+      slug,
+      title: entry.data.title || link.title,
+      description: entry.data.description,
+      pubDate: entry.data.pubDate,
+    };
+  })
+  .filter((post) => post !== null)
+  .sort((a, b) => b.pubDate.valueOf() - a.pubDate.valueOf());
 ---
 
 <BaseLayout title="Blog" description="Artikelen over financiële onderwerpen">
@@ -16,11 +54,11 @@ const posts = (await getCollection('blog'))
         <li>
           <article>
             <h2>
-              <a href={`/${post.id}/`}>{post.data.title}</a>
+              <a href={`/${post.slug}/`}>{post.title}</a>
             </h2>
-            <p class="description">{post.data.description}</p>
-            <time datetime={post.data.pubDate.toISOString()}>
-              {post.data.pubDate.toLocaleDateString('nl-NL', {
+            <p class="description">{post.description}</p>
+            <time datetime={post.pubDate.toISOString()}>
+              {post.pubDate.toLocaleDateString('nl-NL', {
                 year: 'numeric',
                 month: 'long',
                 day: 'numeric',
