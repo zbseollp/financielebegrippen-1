@@ -46,7 +46,7 @@ const TEMPLATE_PATTERNS = [
   /-euro-lenen$/,
   /-achteraf-betalen$/,
   /^aandelen-.+-kopen-of-niet$/,
-  /^vermogen-van\//,
+  /^vermogen-van[-/]/,
 ];
 
 const posts = (await getCollection('blog'))

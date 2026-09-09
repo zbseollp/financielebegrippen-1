@@ -1,0 +1,31 @@
+---
+import { getCollection, render } from 'astro:content';
+import BlogPostLayout from '../../layouts/BlogPostLayout.astro';
+import { isVermogenVanId, vermogenVanName } from '../../lib/hub-pages';
+
+export const prerender = true;
+
+/**
+ * Payload cannot store a slash in a slug, so these posts arrive as
+ * `vermogen-van-<naam>`. This route puts them back on the URL they have always
+ * had, /vermogen-van/<naam>/, and [...slug].astro skips them so each post keeps
+ * exactly one address.
+ */
+export async function getStaticPaths() {
+  const entries = await getCollection('blog');
+
+  return entries
+    .filter((entry) => isVermogenVanId(entry.id))
+    .map((entry) => ({
+      params: { naam: vermogenVanName(entry.id) },
+      props: { entry },
+    }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+---
+
+<BlogPostLayout entry={entry}>
+  <Content />
+</BlogPostLayout>

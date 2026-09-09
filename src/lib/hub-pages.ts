@@ -12,6 +12,26 @@ export interface HubGroup {
 
 type BlogEntry = CollectionEntry<'blog'>;
 
+/**
+ * Payload normalises slugs and drops slashes, so these posts are stored as
+ * `vermogen-van-<naam>`. src/pages/vermogen-van/[naam].astro renders them back
+ * at their original /vermogen-van/<naam>/ URL, so never link to them by id.
+ */
+export const VERMOGEN_VAN_PREFIX = 'vermogen-van-';
+
+export function isVermogenVanId(id: string) {
+  return id.startsWith(VERMOGEN_VAN_PREFIX);
+}
+
+export function vermogenVanName(id: string) {
+  return id.slice(VERMOGEN_VAN_PREFIX.length);
+}
+
+/** The public URL of a blog entry, whichever route renders it. */
+export function postHref(id: string) {
+  return isVermogenVanId(id) ? `/vermogen-van/${vermogenVanName(id)}/` : `/${id}/`;
+}
+
 const EURO_DIGIT_ORDER = ['5', '1', '2', '6', '7', '3', '4', '8', '9', '0'];
 
 const ACHTERAF_LABELS: Record<string, string> = {
@@ -97,12 +117,10 @@ export function groupAchterafBetalen(entries: BlogEntry[]): HubGroup[] {
 }
 
 export function groupVermogenVan(entries: BlogEntry[]): HubGroup[] {
-  const links = entries
-    .filter((entry) => entry.id.startsWith('vermogen-van/'))
-    .map((entry) => ({
-      href: `/${entry.id}/`,
-      label: entry.data.title,
-    }));
+  const links = entries.filter((entry) => isVermogenVanId(entry.id)).map((entry) => ({
+    href: postHref(entry.id),
+    label: entry.data.title,
+  }));
 
   return toGroups(links, sortByLabel);
 }

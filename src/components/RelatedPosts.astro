@@ -1,5 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
+import { postHref } from '../lib/hub-pages';
 
 interface Props {
   excludeSlug?: string;
@@ -31,7 +32,7 @@ function formatDate(date: Date) {
       >
         <div class="elementor-post__text">
           <p class="elementor-post__title">
-            <a href={`/${post.id}/`}>{post.data.title}</a>
+            <a href={postHref(post.id)}>{post.data.title}</a>
           </p>
           <div class="elementor-post__meta-data">
             <span class="elementor-post-date">{formatDate(post.data.pubDate)}</span>

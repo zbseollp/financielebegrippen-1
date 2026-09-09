@@ -2,6 +2,7 @@
 import InnerPageLayout from './InnerPageLayout.astro';
 import InnerArticle from '../components/InnerArticle.astro';
 import type { CollectionEntry } from 'astro:content';
+import { isVermogenVanId } from '../lib/hub-pages';
 
 interface Props {
   entry: CollectionEntry<'blog'>;
@@ -11,7 +12,7 @@ const { entry } = Astro.props;
 const { title, description, pubDate } = entry.data;
 const { id } = entry;
 
-const isVermogenVan = id.startsWith('vermogen-van/');
+const isVermogenVan = isVermogenVanId(id);
 const isEuroLenen = id.endsWith('-euro-lenen');
 const isAchterafBetalen = id.endsWith('-achteraf-betalen');
 
