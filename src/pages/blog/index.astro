@@ -4,17 +4,21 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import sitemapData from '../../data/sitemap-data.json';
 
 /**
- * The migrated frontmatter lost the WordPress categories (every post ships
- * `categories: []`), so the blog set comes from the "Categorie: BLOG" bucket in
- * the captured sitemap data instead. Collection entries supply the metadata.
+ * Posts are synced in from Payload, whose blog-posts collection has no category
+ * field, so the frontmatter carries nothing to filter on. The blog set is
+ * derived from the captured WordPress sitemap instead:
+ *
+ *   - everything in the "Categorie: BLOG" bucket, plus
+ *   - every entry the snapshot does not know at all, which is exactly the
+ *     content added after the migration.
+ *
+ * The A-Z buckets hold the glossary and the template pages below have their own
+ * navigation, so neither shows up here.
  */
 type SitemapLink = { title: string; href: string };
 type SitemapCategory = { label: string; links: SitemapLink[] };
 
-const blogLinks =
-  (sitemapData.categories as SitemapCategory[]).find((cat) =>
-    cat.label.trim().toUpperCase().endsWith('BLOG'),
-  )?.links ?? [];
+const categories = sitemapData.categories as SitemapCategory[];
 
 /** Live hrefs are percent-encoded and some carry non-breaking hyphens (U+2011). */
 function slugFromHref(href: string) {
@@ -27,21 +31,36 @@ function slugFromHref(href: string) {
   return slug.replace(/[‐-―]/g, '-').replace(/^\/|\/$/g, '');
 }
 
-const entriesById = new Map((await getCollection('blog')).map((entry) => [entry.id, entry]));
+const blogSlugs = new Set(
+  (categories.find((cat) => cat.label.trim().toUpperCase().endsWith('BLOG'))?.links ?? []).map(
+    (link) => slugFromHref(link.href),
+  ),
+);
 
-const posts = blogLinks
-  .map((link) => {
-    const slug = slugFromHref(link.href);
-    const entry = entriesById.get(slug);
-    if (!entry) return null;
-    return {
-      slug,
-      title: entry.data.title || link.title,
-      description: entry.data.description,
-      pubDate: entry.data.pubDate,
-    };
+const capturedSlugs = new Set(
+  categories.flatMap((cat) => cat.links.map((link) => slugFromHref(link.href))),
+);
+
+/** Generated pages that are reached from their own menus, never from the blog. */
+const TEMPLATE_PATTERNS = [
+  /-euro-lenen$/,
+  /-achteraf-betalen$/,
+  /^aandelen-.+-kopen-of-niet$/,
+  /^vermogen-van\//,
+];
+
+const posts = (await getCollection('blog'))
+  .filter((entry) => {
+    if (blogSlugs.has(entry.id)) return true;
+    if (capturedSlugs.has(entry.id)) return false;
+    return !TEMPLATE_PATTERNS.some((pattern) => pattern.test(entry.id));
   })
-  .filter((post) => post !== null)
+  .map((entry) => ({
+    slug: entry.id,
+    title: entry.data.title,
+    description: entry.data.description,
+    pubDate: entry.data.pubDate,
+  }))
   .sort((a, b) => b.pubDate.valueOf() - a.pubDate.valueOf());
 ---
 
