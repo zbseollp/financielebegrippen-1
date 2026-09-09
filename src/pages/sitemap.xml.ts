@@ -1,5 +1,6 @@
 import type { APIRoute } from 'astro';
 import { getCollection } from 'astro:content';
+import { postHref } from '../lib/hub-pages';
 
 /**
  * XML-sitemap. De site had er geen — /sitemap/ is een HTML-pagina die uit de
@@ -35,7 +36,7 @@ export const GET: APIRoute = async () => {
 
   for (const entry of entries) {
     const date = entry.data.updatedDate ?? entry.data.pubDate;
-    urls.set(`/${entry.id}/`, date ? date.toISOString().slice(0, 10) : undefined);
+    urls.set(postHref(entry.id), date ? date.toISOString().slice(0, 10) : undefined);
   }
 
   const body = [
